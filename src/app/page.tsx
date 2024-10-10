@@ -3,7 +3,7 @@
 import Banner from "@/components/Banner";
 import OrdersReport from "@/components/OrdersReport";
 import { useState } from "react";
-import LoadingOverlay from "@/components/LoadingOverlay";
+// import LoadingOverlay from "@/components/LoadingOverlay";
 
 export default function Home() {
 
@@ -21,7 +21,7 @@ export default function Home() {
   // ---------------------------- rendering to DOM
   return (
     <main className="grid grid-rows-1 grid-cols-1 gap-0 text-content">
-      <LoadingOverlay show={(appState == 2) ? true : false} bgColor="#b82308"></LoadingOverlay>
+      {/* <LoadingOverlay show={(appState == 2) ? true : false} bgColor="#b82308"></LoadingOverlay> */}
 
 
       <Banner />
@@ -33,10 +33,14 @@ export default function Home() {
         <div>
           <div className="text-accent text-3xl font-bold mb-2.5">Welcome loyal pizza dispatcher....</div>Click the &quot;Get Orders&quot; button below to view all current orders that need to be delivered.
           <div>
+              
               <button 
-                className="bg-accent border-none rounded-md p-2.5 text-white hover:bg-greyContent mt-5" onClick={showOrders}>
-                  Get Orders
-                  </button>
+                className={`bg-accent border-none rounded-md p-2.5 text-white mt-5 hover:bg-greyContent ${appState == 2 ? "cursor-not-allowed bg-gray-400" :""}`} 
+                onClick={showOrders} 
+                disabled={appState === 2}  
+              >
+                Get Orders
+              </button>
           </div>
         </div>
         <div className="shrink-0 text-lg text-right text-greyContent hidden md:block">
