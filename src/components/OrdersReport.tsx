@@ -62,9 +62,9 @@ export default function OrdersReport({setAppState, appState}: {setAppState:Funct
                         <div><i className="fas fa-pizza-slice"></i><strong> Pizza Size:</strong></div>
                         <div>{order.size}</div>
                         <div><strong>Order Details:</strong></div>
-                        <div>{order.toppings.map(item => item.topping).join(", ")}</div>
+                        <div>{order.toppings.map(item =>(<p>{item.topping}</p>) )}</div>
                         <div><strong>Order Notes:</strong> </div>
-                        <div>{order.notes.map(item => item.note).join(", ")}</div>
+                        <div>{order.notes.map(item => (<p>{item.note}</p>) )}</div>
                     </div>
                     ))}
                     {/* <div className="id"></div>
