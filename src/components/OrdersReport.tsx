@@ -51,9 +51,29 @@ export default function OrdersReport({setAppState, appState}: {setAppState:Funct
     }
     else if ( appState == 3) {
         return (
-            <>
-                !!! render out orders content here!!
-            </>
+                <div className="flex flex-col">
+                    !!! render out orders content here!
+                    {orders.map((order) => (
+                        <div key={order.id} className="order bg-gray-100 p-4 rounded-md mb-4">
+                        <div><strong>Order #{order.id}:</strong></div>
+                        <div><i className="fas fa-info-circle"></i><strong> Customer Information:</strong></div>
+                        <div>{order.name}</div>
+                        <div>{order.address}, {order.city}</div>
+                        <div><i className="fas fa-pizza-slice"></i><strong> Pizza Size:</strong></div>
+                        <div>{order.size}</div>
+                        <div><strong>Order Details:</strong></div>
+                        <div>{order.toppings.map(t => t.topping).join(", ")}</div>
+                        <div><strong>Order Notes:</strong> </div>
+                        <div>{order.notes.map(n => n.note).join(", ")}</div>
+                    </div>
+                    ))}
+                    {/* <div className="id"></div>
+                    <div><i className="fas fa-info-circle"></i> Customer Information</div>
+                    <div><i className="fas fa-pizza-slice"></i> Pizza Size</div>
+                    <div><i className="fas fa-list-ul"></i>Order Details</div>
+                    <div><i className="fas fa-sticky-note"></i>Order Notes</div> */}
+                </div>
+            
         )
     }
 
